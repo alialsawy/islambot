@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: islamic-telegram-bot
+    env: python
+    plan: free
+    buildCommand: pip install flask openai pytelegrambotapi schedule gunicorn
+    startCommand: python main.py
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHANNEL_ID
+        sync: false
+      - key: MAX_CONTENT_LENGTH
+        value: "500"
+      - key: CONTENT_TEMPERATURE
+        value: "0.8"
+      - key: RETRY_ATTEMPTS
+        value: "3"
+      - key: RETRY_DELAY
+        value: "60"
+      - key: MORNING_AZKAR_TIME
+        value: "06:00"
+      - key: QURAN_VERSE_TIME
+        value: "08:00"
+      - key: DAILY_HADITH_TIME
+        value: "12:00"
+      - key: DAILY_REMINDER_TIME
+        value: "17:00"
+      - key: DAILY_DUA_TIME
+        value: "20:00"
+      - key: EVENING_AZKAR_TIME
+        value: "21:00"
